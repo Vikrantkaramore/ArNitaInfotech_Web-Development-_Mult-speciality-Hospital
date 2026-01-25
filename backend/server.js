@@ -6,7 +6,7 @@ db.query(`CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
-  role ENUM('admin', 'doctor') NOT NULL
+  role VARCHAR(10) NOT NULL
 )`, (err) => {
   if (err) console.error('Error creating users table:', err);
   else {
@@ -27,6 +27,8 @@ db.query(`CREATE TABLE IF NOT EXISTS doctors (
 )`, (err) => {
   if (err) console.error('Error creating doctors table:', err);
 });
+
+
 
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -178,4 +180,5 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(5001, () => console.log("Server running on port 5001"));
+const PORT = process.env.PORT || 5001;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
