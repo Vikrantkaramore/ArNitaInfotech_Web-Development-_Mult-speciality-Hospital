@@ -17,7 +17,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5001/api/addAppointment", {
+      const response = await fetch(`${API_BASE}/api/addAppointment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -14,20 +14,20 @@ export default function Dashboard({ role }) {
   }, [role]);
 
   const fetchAppointments = () => {
-    fetch('http://localhost:5001/api/appointments')
+    fetch(`${API_BASE}/api/appointments`)
       .then(res => res.json())
       .then(setAppointments);
   };
 
   const fetchDoctors = () => {
-    fetch('http://localhost:5001/api/doctors')
+    fetch(`${API_BASE}/api/doctors`)
       .then(res => res.json())
       .then(setDoctors);
   };
 
   const deleteAppointment = (id) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
-      fetch(`http://localhost:5001/api/appointments/${id}`, { method: 'DELETE' })
+      fetch(`${API_BASE}/api/appointments/${id}`, { method: 'DELETE' })
         .then(res => {
           if (res.ok) {
             fetchAppointments();
@@ -40,18 +40,18 @@ export default function Dashboard({ role }) {
   };
 
   const confirmAppointment = (id) => {
-    fetch(`http://localhost:5001/api/confirm/${id}`, { method: 'PUT' })
+    fetch(`${API_BASE}/api/confirm/${id}`, { method: 'PUT' })
       .then(() => fetchAppointments());
   };
 
   const rejectAppointment = (id) => {
-    fetch(`http://localhost:5001/api/reject/${id}`, { method: 'PUT' })
+    fetch(`${API_BASE}/api/reject/${id}`, { method: 'PUT' })
       .then(() => fetchAppointments());
   };
 
   const deleteDoctor = (id) => {
     if (window.confirm('Are you sure you want to delete this doctor?')) {
-      fetch(`http://localhost:5001/api/doctors/${id}`, { method: 'DELETE' })
+      fetch(`${API_BASE}/api/doctors/${id}`, { method: 'DELETE' })
         .then(res => {
           if (res.ok) {
             fetchDoctors();
