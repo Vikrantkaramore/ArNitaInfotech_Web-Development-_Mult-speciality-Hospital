@@ -17,7 +17,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_BASE}/api/addAppointment`, {
+      const response = await fetch(`mysql-production-f6b3.up.railway.app`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

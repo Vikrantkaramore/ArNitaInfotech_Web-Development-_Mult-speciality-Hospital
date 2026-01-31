@@ -65,7 +65,7 @@ export default function Dashboard({ role }) {
 
   const addDoctor = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5001/api/doctors', {
+    fetch('mysql-production-f6b3.up.railway.app', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newDoctor)

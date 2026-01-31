@@ -9,7 +9,7 @@ export default function BookedAppointmentsLeaderboard() {
   }, []);
 
   const fetchAppointments = () => {
-    fetch('http://localhost:5001/api/appointments')
+    fetch('mysql-production-f6b3.up.railway.app')
       .then(res => res.json())
       .then(setAppointments);
   };

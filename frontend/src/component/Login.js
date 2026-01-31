@@ -11,7 +11,7 @@ export default function Login({ setRole }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5001/api/login', {
+      const res = await fetch('mysql-production-f6b3.up.railway.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
