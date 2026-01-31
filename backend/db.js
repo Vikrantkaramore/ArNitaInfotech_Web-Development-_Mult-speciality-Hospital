@@ -8,6 +8,17 @@ const dbConfig = {
   port: process.env.DB_PORT || 3306
 };
 
+// Support for Heroku JawsDB DATABASE_URL
+if (process.env.DATABASE_URL) {
+  const { URL } = require('url');
+  const url = new URL(process.env.DATABASE_URL);
+  dbConfig.host = url.hostname;
+  dbConfig.user = url.username;
+  dbConfig.password = url.password;
+  dbConfig.database = url.pathname.slice(1);
+  dbConfig.port = url.port;
+}
+
 let db;
 
 function connectWithRetry() {
