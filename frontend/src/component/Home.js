@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_BASE from "../config";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`mysql-production-f6b3.up.railway.app`, {
+      const response = await fetch(`${API_BASE}/api/addAppointment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

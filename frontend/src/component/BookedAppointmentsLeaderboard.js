@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../config';
 
 export default function BookedAppointmentsLeaderboard() {
   const [appointments, setAppointments] = useState([]);
@@ -9,7 +10,7 @@ export default function BookedAppointmentsLeaderboard() {
   }, []);
 
   const fetchAppointments = () => {
-    fetch('mysql-production-f6b3.up.railway.app')
+    fetch(`${API_BASE}/api/appointments`)
       .then(res => res.json())
       .then(setAppointments);
   };

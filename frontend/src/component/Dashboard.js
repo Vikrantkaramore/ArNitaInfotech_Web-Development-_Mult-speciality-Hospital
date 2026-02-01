@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../config';
 
 export default function Dashboard({ role }) {
   const [appointments, setAppointments] = useState([]);
@@ -65,7 +66,7 @@ export default function Dashboard({ role }) {
 
   const addDoctor = (e) => {
     e.preventDefault();
-    fetch('mysql-production-f6b3.up.railway.app', {
+    fetch(`${API_BASE}/api/doctors`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newDoctor)
